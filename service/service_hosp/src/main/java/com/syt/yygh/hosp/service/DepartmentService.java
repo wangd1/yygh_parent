@@ -1,0 +1,35 @@
+package com.syt.yygh.hosp.service;
+
+import com.syt.yygh.model.hosp.Department;
+import com.syt.yygh.vo.hosp.DepartmentQueryVo;
+import org.springframework.data.domain.Page;
+
+import java.util.Map;
+
+/**
+ * @author Wangdi
+ */
+public interface DepartmentService {
+
+    /**
+     * 上传科室
+     * @param paramMap
+     */
+    void save(Map<String, Object> paramMap);
+
+    /**
+     * 查询科室
+     * @param page 当前页
+     * @param limit 个数
+     * @param departmentQueryVo 查询条件
+     * @return 结果
+     */
+    Page<Department> findPage(int page, int limit, DepartmentQueryVo departmentQueryVo);
+
+    /**
+     * 删除科室
+     * @param depcode 科室编号
+     * @return
+     */
+    void removeDepartment(String hosCode,String depcode);
+}
