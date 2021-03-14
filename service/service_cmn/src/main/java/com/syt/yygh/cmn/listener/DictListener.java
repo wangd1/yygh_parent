@@ -9,6 +9,7 @@ import com.syt.yygh.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
 
 /**
+ * 导入excel用的
  * @Author: wangdi
  * @Date: 2021/3/13
  */
