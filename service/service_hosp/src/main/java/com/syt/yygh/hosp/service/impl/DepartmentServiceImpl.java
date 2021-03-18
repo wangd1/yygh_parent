@@ -5,13 +5,17 @@ import com.syt.yygh.hosp.repository.DepartmentRepository;
 import com.syt.yygh.hosp.service.DepartmentService;
 import com.syt.yygh.model.hosp.Department;
 import com.syt.yygh.vo.hosp.DepartmentQueryVo;
+import com.syt.yygh.vo.hosp.DepartmentVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @Author: wangdi
@@ -61,5 +65,42 @@ public class DepartmentServiceImpl implements DepartmentService {
         if (department!=null) {
             departmentRepository.deleteById(department.getId());
         }
+    }
+
+    @Override
+    public List<DepartmentVo> findDepartmentTree(String hosCode) {
+        List<DepartmentVo> allVo = new ArrayList<>();
+        // 获取哦医院所有科室
+        Department probe = new Department();
+        probe.setHoscode(hosCode);
+        List<Department> allList = departmentRepository.findAll(Example.of(probe));
+        // 按照bigCode分组
+        Map<String, List<Department>> allMap =
+                allList.stream().collect(Collectors.groupingBy(Department::getBigcode));
+        for (Map.Entry<String, List<Department>> entry : allMap.entrySet()) {
+            String bigCode = entry.getKey();
+            List<Department> childList = entry.getValue();
+            // 封装大科室
+            DepartmentVo departmentVo = new DepartmentVo();
+            departmentVo.setDepcode(bigCode);
+            departmentVo.setDepname(childList.get(0).getBigname());
+
+            List<DepartmentVo> childrenVo = new ArrayList<>();
+            // 封装小科室
+            for (Department department : childList) {
+                DepartmentVo departmentVoChild = new DepartmentVo();
+                departmentVoChild.setDepcode(department.getDepcode());
+                departmentVoChild.setDepname(department.getDepname());
+                childrenVo.add(departmentVoChild);
+            }
+            departmentVo.setChildren(childrenVo);
+            allVo.add(departmentVo);
+        }
+        return allVo;
+    }
+
+    @Override
+    public Department getDepartmentByHoscodeAndDepcode(String hoscode, String depcode) {
+        return departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode,depcode);
     }
 }

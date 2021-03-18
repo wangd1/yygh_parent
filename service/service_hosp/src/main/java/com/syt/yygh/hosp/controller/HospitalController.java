@@ -17,7 +17,6 @@ import java.util.Map;
  * @Author: wangdi
  * @Date: 2021/3/14
  */
-@CrossOrigin
 @Api(tags = "医院管理")
 @RestController
 @RequestMapping("/admin/hosp/hospital")

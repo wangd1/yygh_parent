@@ -2,8 +2,10 @@ package com.syt.yygh.hosp.service;
 
 import com.syt.yygh.model.hosp.Department;
 import com.syt.yygh.vo.hosp.DepartmentQueryVo;
+import com.syt.yygh.vo.hosp.DepartmentVo;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,4 +34,19 @@ public interface DepartmentService {
      * @return
      */
     void removeDepartment(String hosCode,String depcode);
+
+    /**
+     * 查询医院所有科室，树结构
+     * @param hosCode 医院编号
+     * @return list
+     */
+    List<DepartmentVo> findDepartmentTree(String hosCode);
+
+    /**
+     * 获取科室信息
+     * @param hoscode 医院编号
+     * @param depcode 科室编号
+     * @return 科室信息
+     */
+    Department getDepartmentByHoscodeAndDepcode(String hoscode, String depcode);
 }
