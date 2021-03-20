@@ -348,7 +348,7 @@ public class ApiServiceImpl implements ApiService {
 //            paramMap.put("sign", HttpRequestHelper.getSign(paramMap, apiService.getSignKey()));
             paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 
-            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,"http://192.168.0.106/api/hosp/saveHospital");
+            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,"http://192.168.0.105/api/hosp/saveHospital");
             System.out.println(respone.toJSONString());
             if(null == respone || 200 != respone.getIntValue("code")) {
                 throw new YyghException(respone.getString("message"), 201);

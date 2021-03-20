@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_user</artifactId>
+    <artifactId>service_msm</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -18,9 +18,18 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.syt.yygh</groupId>
-            <artifactId>service_cmn_client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>tea-openapi</artifactId>
+            <version>0.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>dysmsapi20170525</artifactId>
+            <version>2.0.1</version>
         </dependency>
     </dependencies>
 

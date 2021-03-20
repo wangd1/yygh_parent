@@ -19,4 +19,7 @@ public class LoginVo {
 
     @ApiModelProperty(value = "IP")
     private String ip;
+
+    @ApiModelProperty(value = "登录类型(0:账号密码,1:手机密码,2:手机验证码,3:微信)")
+    private Integer loginType;
 }

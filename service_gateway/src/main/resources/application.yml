@@ -6,7 +6,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.0.106:8848
+        server-addr: 192.168.0.105:8848
     gateway:
       discovery:
         locator:
@@ -18,4 +18,10 @@ spring:
         - id: servie_cmn
           uri: lb://service-cmn
           predicates: Path=/*/cmn/**
+        - id: servie_user
+          uri: lb://service-user
+          predicates: Path=/*/user/**
+        - id: servie_msm
+          uri: lb://service-msm
+          predicates: Path=/*/msm/**
 

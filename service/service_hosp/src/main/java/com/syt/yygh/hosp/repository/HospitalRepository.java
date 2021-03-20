@@ -4,6 +4,8 @@ import com.syt.yygh.model.hosp.Hospital;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author Wangdi
  */
@@ -16,4 +18,11 @@ public interface HospitalRepository extends MongoRepository<Hospital,String> {
      * @return 姐u共
      */
     Hospital getHospitalByHoscode(String code);
+
+    /**
+     * 根据医院名称模糊查询
+     * @param hospname yymc
+     * @return jieguo
+     */
+    List<Hospital> findHospitalsByHosnameLike(String hospname);
 }

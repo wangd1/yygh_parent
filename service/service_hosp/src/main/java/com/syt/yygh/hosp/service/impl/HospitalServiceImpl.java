@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -85,6 +86,22 @@ public class HospitalServiceImpl implements HospitalService {
     public Map<String,Object> getHospitalById(String id) {
         Map<String,Object> result = new HashMap<>(2);
         Hospital hospital = hospitalRepository.findById(id).get();
+        setHospitalTypeName(hospital);
+        result.put("bookingRules",hospital.getBookingRule());
+        hospital.setBookingRule(null);
+        result.put("hospital",hospital);
+        return result;
+    }
+
+    @Override
+    public List<Hospital> findByHospName(String hospName) {
+        return hospitalRepository.findHospitalsByHosnameLike(hospName);
+    }
+
+    @Override
+    public Map<String, Object> findHospDetail(String hoscode) {
+        Map<String,Object> result = new HashMap<>(2);
+        Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
         setHospitalTypeName(hospital);
         result.put("bookingRules",hospital.getBookingRule());
         hospital.setBookingRule(null);

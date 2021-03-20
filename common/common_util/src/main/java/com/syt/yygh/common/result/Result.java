@@ -24,7 +24,7 @@ public class Result<T> {
     public Result(){}
 
     protected static <T> Result<T> build(T data) {
-        Result<T> result = new Result<T>();
+        Result<T> result = new Result<>();
         if (data != null) {
             result.setData(data);
         }
@@ -51,9 +51,9 @@ public class Result<T> {
 
     /**
      * 操作成功
-     * @param data
-     * @param <T>
-     * @return
+     * @param data data
+     * @param <T> t
+     * @return 结果
      */
     public static<T> Result<T> ok(T data){
         Result<T> result = build(data);
@@ -66,9 +66,9 @@ public class Result<T> {
 
     /**
      * 操作失败
-     * @param data
-     * @param <T>
-     * @return
+     * @param data data
+     * @param <T> t
+     * @return 结果
      */
     public static<T> Result<T> fail(T data){
         Result<T> result = build(data);
@@ -86,9 +86,6 @@ public class Result<T> {
     }
 
     public boolean isOk() {
-        if(this.getCode().intValue() == ResultCodeEnum.SUCCESS.getCode().intValue()) {
-            return true;
-        }
-        return false;
+        return this.getCode().intValue() == ResultCodeEnum.SUCCESS.getCode().intValue();
     }
 }
