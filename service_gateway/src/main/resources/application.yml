@@ -21,7 +21,10 @@ spring:
         - id: servie_user
           uri: lb://service-user
           predicates: Path=/*/user/**
-        - id: servie_msm
-          uri: lb://service-msm
-          predicates: Path=/*/msm/**
+        - id: servie_sms
+          uri: lb://service-sms
+          predicates: Path=/*/sms/**
+        - id: servie_user
+          uri: lb://service-user
+          predicates: Path=/*/ucenter/**
 

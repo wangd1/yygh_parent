@@ -7,6 +7,7 @@ import com.syt.yygh.common.result.ResultCodeEnum;
 import com.syt.yygh.enums.LoginTypeEnum;
 import com.syt.yygh.model.user.UserInfo;
 import com.syt.yygh.user.mapper.UserInfoMapper;
+import com.syt.yygh.user.service.UserInfoService;
 import com.syt.yygh.vo.user.LoginVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class PhoneCodeLoginProcessor extends AbstractLogin {
 
     @Autowired
     private UserInfoMapper userInfoMapper;
+    @Autowired
+    private UserInfoService userInfoService;
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
@@ -60,17 +63,31 @@ public class PhoneCodeLoginProcessor extends AbstractLogin {
         if(!code.equals(redisCode)){
             throw new YyghException(ResultCodeEnum.CODE_ERROR);
         }
-        // 判断是否第一次登录(根据手机号查询，如果不存在，就是第一次登录)
-        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("phone",phone);
-        UserInfo userInfo = userInfoMapper.selectOne(queryWrapper);
-        // 如果是第一次，要插入数据到数据库，不是就直接登录
-        if(userInfo==null){
-            userInfo = new UserInfo();
-            userInfo.setName("");
-            userInfo.setPhone(phone);
-            userInfo.setStatus(1);
-            userInfoMapper.insert(userInfo);
+
+        //绑定手机号码
+        UserInfo userInfo = null;
+        if(!StringUtils.isEmpty(loginVo.getOpenid())) {
+            userInfo = userInfoService.getByOpenid(loginVo.getOpenid());
+            if(null != userInfo) {
+                userInfo.setPhone(loginVo.getPhone());
+                userInfoMapper.updateById(userInfo);
+            } else {
+                throw new YyghException(ResultCodeEnum.DATA_ERROR);
+            }
+        }
+        if(userInfo == null){
+            // 判断是否第一次登录(根据手机号查询，如果不存在，就是第一次登录)
+            QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("phone",phone);
+            userInfo = userInfoMapper.selectOne(queryWrapper);
+            // 如果是第一次，要插入数据到数据库，不是就直接登录
+            if(userInfo==null){
+                userInfo = new UserInfo();
+                userInfo.setName("");
+                userInfo.setPhone(phone);
+                userInfo.setStatus(1);
+                userInfoMapper.insert(userInfo);
+            }
         }
         if(userInfo.getStatus()==0){
             throw new YyghException(ResultCodeEnum.LOGIN_DISABLED_ERROR);
