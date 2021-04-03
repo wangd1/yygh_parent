@@ -28,9 +28,9 @@ aliyun:
     accessKeyId: default
     secret: default
   oss:
-    endpoint: https://oss-cn-beijing.aliyuncs.com
-    accessKeyId: LTAI4GCZJp16Qdh44a9gh9V2
-    secret: v3Y8fHI1oYIrjoHtY2SfQxwxIfO3ku
-    bucket: bucket-wd
+    endpoint: default
+    accessKeyId: default
+    secret: default
+    bucket: default
 
 
