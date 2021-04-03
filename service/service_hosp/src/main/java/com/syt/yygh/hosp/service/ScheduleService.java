@@ -51,4 +51,21 @@ public interface ScheduleService {
      * @return 结果
      */
     List<Schedule> getScheduleDetail(String hoscode, String depcode, String workDate);
+
+    /**
+     * 获取可预约排班数据
+     * @param page 页码
+     * @param limit 个数
+     * @param hoscode 医院编号
+     * @param depcode 科室编号
+     * @return 结果
+     */
+    Map<String,Object> getBookingScheduleRule(Integer page, Integer limit, String hoscode, String depcode);
+
+    /**
+     * 根据排班id获取信息
+     * @param scheduleId id
+     * @return 排班
+     */
+    Schedule getById(String scheduleId);
 }
