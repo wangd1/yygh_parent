@@ -1,9 +1,8 @@
-package com.syt.yygh.msm.controller;
+package com.syt.yygh.sms.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.syt.yygh.common.result.Result;
-import com.syt.yygh.msm.service.SmsService;
-import com.syt.yygh.msm.utils.RandomUtil;
+import com.syt.yygh.sms.service.SmsService;
+import com.syt.yygh.sms.utils.RandomUtil;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.syt.yygh.msm.utils;
+package com.syt.yygh.sms.utils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

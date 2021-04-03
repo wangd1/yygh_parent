@@ -1,4 +1,4 @@
-package com.syt.yygh.msm;
+package com.syt.yygh.sms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

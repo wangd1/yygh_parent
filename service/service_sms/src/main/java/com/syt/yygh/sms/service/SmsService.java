@@ -1,4 +1,4 @@
-package com.syt.yygh.msm.service;
+package com.syt.yygh.sms.service;
 
 /**
  * @author Wangdi
