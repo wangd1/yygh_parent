@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.syt.yygh.model.hosp.Hospital;
 import com.syt.yygh.model.hosp.HospitalSet;
 import com.syt.yygh.vo.hosp.HospitalQueryVo;
+import com.syt.yygh.vo.order.SignInfoVo;
 import org.springframework.data.domain.Page;
 
 /**
@@ -17,5 +18,11 @@ public interface HospitalSetService extends IService<HospitalSet> {
      * @return 签名
      */
     String getSignKey(String code);
+    /**
+     * 根据医院code获取医院签名
+     * @param code code
+     * @return 签名
+     */
+    SignInfoVo getSignInfoVo(String code);
 
 }

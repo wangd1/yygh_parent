@@ -1,6 +1,7 @@
 package com.syt.yygh.hosp.service;
 
 import com.syt.yygh.model.hosp.Schedule;
+import com.syt.yygh.vo.hosp.ScheduleOrderVo;
 import com.syt.yygh.vo.hosp.ScheduleQueryVo;
 import org.springframework.data.domain.Page;
 
@@ -68,4 +69,18 @@ public interface ScheduleService {
      * @return 排班
      */
     Schedule getById(String scheduleId);
+
+    /**
+     * 根据排班id查询
+     * @param scheduleId 排班id
+     * @return 结果
+     */
+    ScheduleOrderVo getScheduleOrderVo(String scheduleId);
+
+    /**
+     * 修改排班
+     * @param schedule 排班信息
+     */
+    void update(Schedule schedule);
+
 }

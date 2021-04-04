@@ -2,6 +2,7 @@ package com.syt.yygh.hosp.service;
 
 import com.syt.yygh.model.hosp.Hospital;
 import com.syt.yygh.vo.hosp.HospitalQueryVo;
+import com.syt.yygh.vo.order.SignInfoVo;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

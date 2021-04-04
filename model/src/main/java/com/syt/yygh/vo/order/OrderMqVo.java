@@ -1,6 +1,6 @@
 package com.syt.yygh.vo.order;
 
-import com.syt.yygh.vo.msm.MsmVo;
+import com.syt.yygh.vo.sms.SmsVo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,7 +19,7 @@ public class OrderMqVo {
 	private String scheduleId;
 
 	@ApiModelProperty(value = "短信实体")
-	private MsmVo msmVo;
+	private SmsVo msmVo;
 
 }
 

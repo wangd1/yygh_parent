@@ -1,11 +1,16 @@
 package com.syt.yygh.hosp.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.syt.yygh.cmn.client.DictFeginClient;
+import com.syt.yygh.common.exception.YyghException;
+import com.syt.yygh.common.result.ResultCodeEnum;
 import com.syt.yygh.hosp.repository.HospitalRepository;
 import com.syt.yygh.hosp.service.HospitalService;
 import com.syt.yygh.model.hosp.Hospital;
+import com.syt.yygh.model.hosp.HospitalSet;
 import com.syt.yygh.vo.hosp.HospitalQueryVo;
+import com.syt.yygh.vo.order.SignInfoVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
