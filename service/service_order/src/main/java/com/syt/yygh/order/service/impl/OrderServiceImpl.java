@@ -163,11 +163,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,OrderInfo> impleme
             //预约记录唯一标识（医院预约记录主键）
             String hosRecordId = jsonObject.getString("hosRecordId");
             //预约序号
-            Integer number = jsonObject.getInteger("number");;
+            Integer number = jsonObject.getInteger("number");
             //取号时间
-            String fetchTime = jsonObject.getString("fetchTime");;
+            String fetchTime = jsonObject.getString("fetchTime");
             //取号地址
-            String fetchAddress = jsonObject.getString("fetchAddress");;
+            String fetchAddress = jsonObject.getString("fetchAddress");
             //更新订单
             orderInfo.setHosRecordId(hosRecordId);
             orderInfo.setNumber(number);
